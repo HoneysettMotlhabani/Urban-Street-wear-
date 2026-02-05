@@ -8,7 +8,6 @@
   <!-- Fonts -->
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
      
-  <link rel="stylesheet" href="figma.css">
   <body>
 <nav>
   <div class="nav-container">
@@ -26,7 +25,391 @@
   </div>
   </div>
 </nav>
+<style>
+:root{
+  --charcoal:#1e1e1e;
+  --terracotta:#c96b4b;
+  --cream:#f6f3ef;
+  --muted:#999;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--cream);
+  color:var(--charcoal);
+}
+
+/* NAV */
+nav{
+  background:var(--charcoal);
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
+
+.nav-container{
+  max-width:1200px;
+  margin:auto;
+  padding:1rem 2rem;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo{
+  font-family:'Bebas Neue';
+  color:white;
+  font-size:2rem;
+  letter-spacing:2px;
+}
+
+.nav-links{
+  list-style:none;
+  display:flex;
+  align-items:center;
+}
+
+.nav-links li{margin-left:2rem}
+
+.nav-links a{
+  color:white;
+  text-decoration:none;
+  position:relative;
+}
+
+.nav-links a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-5px;
+  width:0;
+  height:2px;
+  background:var(--terracotta);
+  transition:.3s;
+}
+
+.nav-links a:hover::after{width:100%}
+
+.cart-icon{position:relative;color:white}
+
+.cart-count{
+  position:absolute;
+  top:-8px;
+  right:-10px;
+  background:var(--terracotta);
+  color:white;
+  border-radius:50%;
+  padding:2px 7px;
+  font-size:.7rem;
+}
+
+/* HAMBURGER */
+.menu-toggle{
+  display:none;
+  font-size:2rem;
+  color:white;
+  cursor:pointer;
+}
+
+/* HERO */
+.hero{
+  min-height:90vh;
+  background:linear-gradient(rgba(30,30,30,.6),rgba(30,30,30,.6)),
+  url('40.jpg') center/cover;
+  display:flex;
+  align-items:center;
+  padding:4rem 2rem;
+  color:white;
+  animation: fadeInUp 2s ease-out 0.9s both;
+}
+
+.hero h2{
+  font-family:'Bebas Neue';
+  font-size:clamp(3rem,6vw,6rem);
+}
+
+.hero span{color:var(--terracotta)}
+
+/* BANNER */
+.banner{
+  background:var(--terracotta);
+  color:white;
+  text-align:center;
+  padding:.8rem;
+}
+
+/* PRODUCTS */
+h2{
+  text-align:center;
+  font-family:'Bebas Neue';
+  font-size:3rem;
+  margin:4rem 0 2rem;
+}
+
+.product-grid{
+  max-width:1300px;
+  margin:auto;
+  padding:0 2rem;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:2.5rem;
+}
+
+.product-card{
+  background:white;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 20px 40px rgba(0,0,0,.08);
+  transition:.4s;
+}
+
+.product-card:hover{
+  transform:translateY(-10px);
+}
+
+.product-card img{
+  width:100%;
+  height:320px;
+  object-fit:cover;
+}
+
+.product-title{
+  font-weight:600;
+  margin:1rem 1.2rem .2rem;
+}
+
+.product-price{
+  color:var(--muted);
+  margin:0 1.2rem;
+}
+
+.product-card button{
+  margin:1rem 1.2rem 1.5rem;
+  width:calc(100% - 2.4rem);
+  padding:.7rem;
+  background:var(--charcoal);
+  color:white;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+.product-card button:hover{
+  background:var(--terracotta);
+}
+
+/* QTY */
+.qty-controls,
+.cart-qty{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin:1rem 0;
+}
+
+.qty-controls button,
+.cart-qty button{
+  width:28px;
+  height:28px;
+  background:var(--charcoal);
+  color:white;
+  border:none;
+  border-radius:6px;
+}
+
+/* CART */
+#cart{
+  background:white;
+  margin:4rem auto;
+  max-width:600px;
+  padding:2rem;
+  border-radius:12px;
+}
+
+#cart li{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:.5rem;
+}
+
+.remove{color:var(--terracotta);cursor:pointer}
+
+/* CHECKOUT */
+.checkout{
+  max-width:500px;
+  margin:auto;
+  display:grid;
+  gap:1rem;
+}
+
+.checkout input{padding:.6rem}
+
+.payments img{height:35px}
+
+/* FOOTER */
+footer{
+  background:var(--charcoal);
+  color:white;
+  text-align:center;
+  padding:3rem;
+}
+
+/* NOTIFICATION */
+#notification{
+  position:fixed;
+  top:20px;
+  right:20px;
+  background:var(--charcoal);
+  color:white;
+  padding:14px 22px;
+  border-radius:10px;
+  opacity:0;
+  transform:translateY(-10px);
+  transition:.3s;
+  z-index:9999;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .menu-toggle{display:block}
+
+  .nav-links{
+    position:absolute;
+    top:100%;
+    left:0;
+    background:var(--charcoal);
+    width:100%;
+    flex-direction:column;
+    display:none;
+  }
+
+  .nav-links.active{display:flex}
+
+  .nav-links li{margin:1rem 0}
+}
+        /* Payment Methods */
+        .payment-methods {
+            padding: 2rem;
+            background: var(--primary);
+            color: black;
+            text-align: center;
+        }
+
+        .payment-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .payment-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .payment-logo {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: black;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+
+
+  .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #F34;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+  #conta{
+    color:  #e74c3c;
+    font-weight: bold;
+    padding: 3rem 2rem 1rem;
+   
+  } 
+ .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #555;
+            color: #aaa;
+        }
+  #contact{
+    background-color:#34495e ;
+  }
   
+  #clear{
+    background-color: black;
+    color: white;
+    border: none;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 30px;
+    padding: 9px 20px;
+    cursor: pointer;
+  }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.price{
+  color: red;
+  font-weight: bold;
+    }  
+</style>
 
 <div class="banner">🔥 20% OFF ALL HOODIES 🔥</div>
 
