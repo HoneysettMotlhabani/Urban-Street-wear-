@@ -598,6 +598,127 @@ footer{
             <p id copyright>&copy; 2025 Honeysett Legacy Co (URBN STREETWEAR). All rights reserved.</p>
         </div>
 </footer>
-<script src="figma.js"></script>
+<script>
+  let cart = JSON.parse(localStorage.getItem("cart")) || {};
+
+/* ================= ADD TO CART (EVENT DELEGATION) ================= */
+document.querySelector(".product-grid").addEventListener("click", e => {
+  if (!e.target.classList.contains("add-to-cart")) return;
+
+  const card = e.target.closest(".product-card");
+
+  const id = card.dataset.id;
+  const name = card.dataset.name;
+  const price = Number(card.dataset.price);
+
+  if (!cart[id]) {
+    cart[id] = { id, name, price, qty: 1 };
+  } else {
+    cart[id].qty += 1;
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  renderCart();
+  showNotification(`${name} added to cart`);
+});
+
+/*hamburger*/
+function toggleMenu() {
+  document.getElementById("nav-links").classList.toggle("active");
+}
+
+/* ================= RENDER CART ================= */
+function renderCart() {
+  const list = document.getElementById("cart-items");
+  const totalEl = document.getElementById("total");
+  const countEl = document.getElementById("cart-count"); // cart icon badge
+
+  list.innerHTML = "";
+  let total = 0;
+  let totalQty = 0; // track total quantity
+
+  Object.values(cart).forEach(item => {
+    total += item.price * item.qty;
+    totalQty += item.qty;
+
+    list.insertAdjacentHTML("beforeend", `
+      <li>
+        ${item.name}
+        <div class="cart-qty">
+          <button onclick="updateQty('${item.id}', -1)">−</button>
+          <span>${item.qty}</span>
+          <button onclick="updateQty('${item.id}', 1)">+</button>
+        </div>
+        P${item.price * item.qty}
+        <span class="remove" onclick="removeItem('${item.id}')">✖</span>
+      </li>
+    `);
+  });
+
+  totalEl.textContent = total;
+
+  // Update cart icon badge
+  if (totalQty > 0) {
+    countEl.textContent = totalQty;
+    countEl.style.display = "inline"; // show badge
+  } else {
+    countEl.style.display = "none"; // hide badge if cart is empty
+  }
+}
+
+/* ================= UPDATE QTY ================= */
+function updateQty(id, change) {
+  if (!cart[id]) return;
+
+  cart[id].qty += change;
+  if (cart[id].qty <= 0) delete cart[id];
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  renderCart();
+}
+
+/* ================= REMOVE ================= */
+function removeItem(id) {
+  const name = cart[id]?.name; // store name for notification
+  delete cart[id];
+  localStorage.setItem("cart", JSON.stringify(cart));
+  renderCart();
+  showNotification(`${name} removed from cart`);
+}
+
+/* ================= CLEAR ================= */
+function clearCart() {
+  cart = {};
+  localStorage.removeItem("cart");
+  renderCart();
+  showNotification("Cart cleared");
+}
+document.getElementById('contactForm').addEventListener('submit', (e) => {
+
+            e.preventDefault
+
+();
+
+            alert('Thank you for your message! We will contact you soon.');
+
+            document.getElementById('contactForm').reset();
+
+        });
+
+/* ================= NOTIFICATION ================= */
+function showNotification(message) {
+  const n = document.getElementById("notification");
+  n.textContent = message;
+  n.style.opacity = "1";
+
+  setTimeout(() => {
+    n.style.opacity = "0";
+  }, 2000);
+
+}
+
+// Initial render
+renderCart();
+</script>
 </body>
 </html>
