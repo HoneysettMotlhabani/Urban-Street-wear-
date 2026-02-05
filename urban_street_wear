@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>URBN | Streetwear</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <!-- Fonts -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+     
+  <link rel="stylesheet" href="figma.css">
+  <body>
+<nav>
+  <div class="nav-container">
+    <h1 class="logo">HONEYSETT LEGACY CO</h1>
+
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#products">Shop</a></li>
+      <li><a href="#form">Send Us a Message</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#Payment">Payment Methods</a></li>
+      <li class="cart-icon">🛒 <span id="cart-count" class="cart-count">0</span></li>
+    </ul>
+  </div>
+  </div>
+</nav>
+  
+
+<div class="banner">🔥 20% OFF ALL HOODIES 🔥</div>
+
+<section  class="hero back">
+  <h2>Modern Streetwear<br><span>Built Different</span></h2>
+</section>
+
+<!-- Product Card Template -->
+
+  <h2>Featured Drops</h2>
+  <div class="product-grid"id="products">
+    
+<!--BlackHoodie-->
+
+    <div class="product-card" data-id="1" data-name="Black Hoodie" data-price="850">
+  <img src="jim.jpg" alt="Black Hoodie" width="100%">
+  <div class="product-title">Black Hoodie</div>
+  <div class="product-price"><p class="price">P850</p></div>
+  <button class="add-to-cart">Add to Cart</button>
+</div>
+
+    <!--OversizedTee-->
+    
+<div class="product-card" data-id="2" data-name="OverizedTee" data-price="850">
+  <img src="bord.jpg" alt="OversizedTee" width="100%">
+  <div class="product-title">Oversized Tee</div>
+  <div class="product-price"> <p class="price">P150 </p></div>
+  <button class="add-to-cart">Add to Cart</button>
+</div>
+
+ <!--Cargo pants-->
+ 
+ <div class="product-card" data-id="3" data-name="CargoPants" data-price="650">
+  <img src="cargo.jpg" alt="CargoPants" width="100%">
+  <div class="product-title">Cargo Pants</div>
+  <div class="product-price"><p class="price">P650</p></div>
+  <button class="add-to-cart">Add to Cart</button>
+</div>
+
+<!--Air Force-->
+
+<div class="product-card" data-id="4" data-name="Customized-Air-Force-1" data-price="1200">
+  <img src="air.webp" alt="Customized AirForce 1" width="100%">
+  <div class="product-title">Customized AirForce 1</div>
+  <div class="product-price"><p class="price">P1200</p></div>
+  <button class="add-to-cart">Add to Cart</button>
+</div>
+
+<!--Terracotta Hoodie-->
+
+ <div class="product-card" data-id="5" data-name="Air-Jordan-Retro4" data-price="1500">
+  <img src="retro4.webp" alt="Air-Jordan-Retro4" width="100%">
+  <div class="product-title">Air Jordan Retro 4</div>
+  <div class="product-price"><p class="price">P1500</p></div>
+  <button class="add-to-cart">Add to Cart</button>
+</div>
+
+<!--Fitted Caps-->
+
+<div class="product-card" data-id="6" data-name="Fitted-Cap" data-price="250">
+  <img src="fitted.webp" alt="FittedCap" width="100%">
+  <div class="product-title">Fitted Cap</div>
+  <div class="product-price"><p class="price">P250</p></div>
+  <button class="add-to-cart">Add to Cart</button>
+</div>
+
+<!--Track Jackets-->
+
+<div class="product-card" data-id="7" data-name="Track-Jacket" data-price="750">
+  <img src="trackjacket.webp" alt="Track Jacket" width="100%">
+  <div class="product-title">Track Jacket</div>
+  <div class="product-price"><p class="price">P750</p></div>
+  <button class="add-to-cart">Add to Cart</button>
+</div>
+
+<!--Graphic T-shirts-->
+
+    <div class="product-card" data-id="8" data-name="Graphic-T-shirt" data-price="550">
+  <img src="graphic.webp" alt="Graphic T-shirt" width="100%">
+  <div class="product-title">Graphic T-shirts</div>
+  <div class="product-price"><p class="price">P550</p></div>
+  <button class="add-to-cart">Add to Cart</button>
+</div>
+
+<!--Addidas Campus-->
+
+   <div class="product-card" data-id="9" data-name="AddidasCampus" data-price="1150">
+  <img src="campus.jpeg" alt="Addidas Campus" width="100%">
+  <div class="product-title">Addidas Campus</div>
+  <div class="product-price"><p class="price">P1150</p></div>
+  <button class="add-to-cart">Add to Cart</button>
+</div>
+   
+<!--Essential Hoodie-->
+
+  <div class="product-card" data-id="10" data-name="Essential Hoodie" data-price="900">
+  <img src="essential.jpg" alt="Essential Hoodie" width="100%">
+  <div class="product-title">Essential Hoodie</div>
+  <div class="product-price"><p class="price">P900</p></div>
+  <button class="add-to-cart">Add to Cart</button>
+</div>
+
+  </div>
+<div class="cart-icon">
+   <span id="cart-count">0</span>
+</div>
+
+<section id="cart">
+  <h3>Cart Summary</h3>
+  <ul id="cart-items"></ul>
+  <strong>Total: P<span id="total">0</span></strong><br><br>
+  <button onclick="clearCart()" id="clear">Clear Cart</button>
+</section>
+
+<!--Contact form-->
+
+   <div class="contact-form" id="form">
+                <h3>Send us a Message</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+
+
+ <section class="payment-methods" id="Payment">
+        <h3>Payment Methods Accepted</h3>
+        <div class="payment-grid">
+           
+            <div class="payment-item">
+                <div class="payment-logo"><img src="R.jpeg" width="100%" height="100%"></div>
+                <span>Orange Money</span>
+            </div>
+            
+            <div class="payment-item">
+                <div class="payment-logo"><img src="fnb.webp"width="100%"height="100%"></div>
+                <span>Pay2Cell</span>
+            </div>
+      <div class="payment-item">
+                <div class="payment-logo"><img src="X.webp" width="100%" height="100%"></div>
+                <span>MY Zaka</span>
+            </div>
+        </div>
+    
+<div id="notification" style="
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: green;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 6px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 1000;
+">
+  Added to cart!
+</div>
+  </div>
+</section>
+
+<footer id="contact">
+  <p id="conta"><b>Contact information</b></p><br>
+   <br> 
+  <p>WhatsApp: (+267) 75 490 146</p>
+  <p>Facebook: Honeysett Mohlabani</p>
+  <p>Email:honeysettlegacy.co@zohomail.com</p> <br><br>
+  
+      <br>  <div class="copyright">
+            <p id copyright>&copy; 2025 Honeysett Legacy Co (URBN STREETWEAR). All rights reserved.</p>
+        </div>
+</footer>
+<script src="figma.js"></script>
+</body>
+</html>
